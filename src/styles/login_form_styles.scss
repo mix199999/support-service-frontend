@@ -1,0 +1,33 @@
+#panel{
+    background-color: #ffffff; // Biały kolor tła dla div-a o id form-panel
+
+}
+
+#loginFooter
+{
+    background-color:rgb(127, 219, 255);
+    color:#ffffff;
+    
+}
+
+#form-panel {
+    
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 15px;
+   // border:rgb(127, 219, 255);
+  }
+  
+  .form-label {
+    text-align: left;
+  }
+  
+  
+  .btn-primary{
+    background-color:rgb(127, 219, 255);
+    border: #ffffff;
+  }
