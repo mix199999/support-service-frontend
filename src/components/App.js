@@ -1,20 +1,29 @@
-import '../styles/App.scss'
-import Header from './Header'
-import logo from '../logo.svg'
+import * as React from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import AppContent from './AppContent';
- function App(){
-    return(
+import DashboardRoutes from "./DashboardRoutes";
+
+function App() {
+    return (
         <div>
-            <Header pageTitle="Support Service" logoSrc={logo}></Header>
             <div className='container-fluid'>
                 <div className='row'>
                     <div className='col'>
-                        <AppContent/>
+                        <Router>
+                            <Routes>
+                                <Route
+                                    path="/"
+                                    element={<AppContent />}
+                                />
+                                {/* DashboardRoutes should not be nested inside another Routes */}
+                                <Route path="/dashboard/*" element={<DashboardRoutes />} />
+                            </Routes>
+                        </Router>
                     </div>
                 </div>
             </div>
         </div>
     );
- }
+}
 
- export default App;
+export default App;

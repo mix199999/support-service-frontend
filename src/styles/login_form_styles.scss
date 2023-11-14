@@ -1,33 +1,54 @@
-#panel{
-    background-color: #ffffff; // Biały kolor tła dla div-a o id form-panel
+.buttonElement > .submitBtn{
+  background-color: rgb(127, 219, 255);
+  border: #ffffff;
+}
+$bg-image : "../images/login-bg.jpeg";
+.containerStyle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vh;
 
 }
 
-#loginFooter
-{
-    background-color:rgb(127, 219, 255);
-    color:#ffffff;
-    
+body{
+  background-image: url($bg-image);
+  background-size: cover; // Obraz wypełni cały obszar, zachowując proporcje
+  background-attachment: fixed;
+  background-position: center center;
 }
 
-#form-panel {
-    
-  }
-  
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-bottom: 15px;
-   // border:rgb(127, 219, 255);
-  }
-  
-  .form-label {
-    text-align: left;
-  }
-  
-  
-  .btn-primary{
-    background-color:rgb(127, 219, 255);
-    border: #ffffff;
-  }
+.panel{
+  color: rgb(127, 219, 255);
+  background-color:#ffffff;
+  border-radius: 10px 10px 10px 10px;
+
+}
+
+.formStyle {
+
+  justify-content: center;
+  align-items: center;
+  padding: 20px 20px  0 20px;
+
+}
+
+
+.formStyle .form-group {
+  margin-bottom: 20px;
+
+
+}
+
+.buttonElement{
+  text-align: center;
+  margin-top: 20px;
+}
+
+.footer{
+  margin-top: 20px;
+  background-color: rgb(127, 219, 255);
+  color:#ffffff;
+  border-radius: 0 0 10px 10px;
+}

@@ -2,47 +2,68 @@ import * as React from 'react';
 import WelcomeContent from './WelcomeContent';
 import AuthContent from "./AuthContent";
 import LoginForm from "./LoginForm";
-import {request} from "./axios_helper";
+import {getAuthToken, request, setAuthHeader, setRole } from './axios_helper';
 import Buttons from "./Buttons";
-export default class AppContent extends React.Component{
+import DashboardRoutes from "./DashboardRoutes";
+import Header from "./Header";
+
+export default class AppContent extends React.Component {
+
     constructor(props) {
         super(props);
-        this.state ={
-            componentToShow:"welcome"
-        };
+        this.state = {
+            componentToShow: getAuthToken() ? "dashboard" : "login"
+        }
     };
 
-    login = () =>{
-        this.setState({componentToShow:"login"});
-        };
-
-    logout = () =>{
-        this.setState({componentToShow:"welcome"});
+    login = () => {
+        this.setState({ componentToShow: "login" });
     };
 
-    onLogin = (e, username, password) =>{
+    logout = () => {
+        this.setState({ componentToShow: "login" });
+        setAuthHeader(null);
+        setRole(null);
+    };
+
+    onLogin = (e, username, password) => {
         e.preventDefault();
-        request("POST",
-            "login",
-            {login:username, password:password}
-        ).then((response) =>
-        {
-            this.setState({componentToShow:"messages"});
-        }).catch((error) =>{
-    this.setState({componentToShow:"welcome"})
-        });
+        request(
+            "POST",
+            "/login",
+            {
+                login: username,
+                password: password
+            }).then(
+            (response) => {
+                console.log('Login successful!');
+                setAuthHeader(response.data.token);
+                setRole(response.data.role);
+                console.log(response.data.role);
+                console.log(response.data.token);
+                this.setState({ componentToShow: "dashboard" });
+
+               // this.setState({ componentToShow: "messages" });
+            }).catch(
+            (error) => {
+                console.error('Login failed:', error);
+                setAuthHeader(null);
+                this.setState({ componentToShow: "welcome" });
+            }
+        );
     };
 
+    render() {
 
-    render(){
 
-        return(
-            <div>
-                <Buttons login={this.login } logout={this.logout}/>
-                {this.state.componentToShow === "welcome" && <WelcomeContent/>}
-                {this.state.componentToShow === "messages" && <AuthContent/>}
-                {this.state.componentToShow === "login" && <LoginForm onLogin={this.onLogin}/>}
-            </div>
-        )
-    }
+        return (
+            <>
+                {this.state.componentToShow === "login" && <LoginForm onLogin={this.onLogin}  />}
+                {this.state.componentToShow === "messages" && <AuthContent />}
+                {this.state.componentToShow === "dashboard" && <DashboardRoutes onLogout={this.logout}
+                                                                                onLogin={this.onLogin}/> }
+
+            </>
+        );
+    };
 }
