@@ -1,8 +1,11 @@
 .buttonElement > .submitBtn{
-  background-color: rgb(127, 219, 255);
-  border: #ffffff;
+  background: rgb(64, 129, 151);
+  color:#ffffff;
+
 }
 $bg-image : "../images/login-bg.jpeg";
+$content-image : "../images/login-form-right-content-img.jpg";
+
 .containerStyle {
   display: flex;
   justify-content: center;
@@ -19,18 +22,14 @@ body{
   background-position: center center;
 }
 
-.panel{
-  color: rgb(127, 219, 255);
-  background-color:#ffffff;
-  border-radius: 10px 10px 10px 10px;
 
-}
 
 .formStyle {
 
   justify-content: center;
   align-items: center;
   padding: 20px 20px  0 20px;
+  height: 50%;
 
 }
 
@@ -48,7 +47,39 @@ body{
 
 .footer{
   margin-top: 20px;
-  background-color: rgb(127, 219, 255);
-  color:#ffffff;
-  border-radius: 0 0 10px 10px;
+  color: rgb(64, 129, 151);
+
+  height: 100%;
+
+
+}
+
+.contentPanel{
+  display: flex;
+  background: white;
+  border-radius: 20px 20px 20px 20px;
+
+  overflow: hidden;
+}
+
+.contentRight {
+
+
+}
+
+.contentLeft {
+  height: 100%;
+  width: 100%;
+  background-color: #ffffff;
+  padding: 20px;
+  color: rgb(64, 129, 151);
+
+}
+
+.contentRight > img{
+  height: 100%;
+  width: 100%;
+
+
+
 }

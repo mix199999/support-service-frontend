@@ -6,7 +6,6 @@ import {getAuthToken, request, setAuthHeader, setRole } from './axios_helper';
 import Buttons from "./Buttons";
 import DashboardRoutes from "./DashboardRoutes";
 import Header from "./Header";
-
 export default class AppContent extends React.Component {
 
     constructor(props) {
@@ -32,7 +31,7 @@ export default class AppContent extends React.Component {
             "POST",
             "/login",
             {
-                login: username,
+                username: username,
                 password: password
             }).then(
             (response) => {

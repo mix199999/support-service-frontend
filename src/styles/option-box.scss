@@ -1,0 +1,14 @@
+.container-option-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  color:white;
+  border-radius: 20px;
+
+  background-size: cover; // Obraz wypełni cały obszar, zachowując proporcje
+background-repeat: no-repeat;
+  background-position: center center;
+  overflow: hidden;
+}

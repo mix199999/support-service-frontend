@@ -1,0 +1,20 @@
+.admin-content-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-color: #222222;
+}
+
+.content-panel {
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);  // Ustawienie dwóch kolumn
+  // Dodanie odstępu między elementami
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  height: 90%;
+  width: 100%;
+}

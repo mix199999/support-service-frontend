@@ -1,101 +1,18 @@
-// styles for admin dashboard
-
-//==================================================================
-// Variables
-//==================================================================
-
-$primary-color: #3498db; // blue
-$secondary-color: #f4f4f4; // light grey
-$text-color: #333; // dark grey
-$background-color: #fff; // white
-
-//==================================================================
-// Layout
-//==================================================================
-
-.admin-dashboard {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: $background-color;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.admin-dashboard-search {
+.containerStyleAdmin{
   display: flex;
+  justify-content: center;
   align-items: center;
-  margin-left: 10px;
-  margin-right: 10px;
-  padding: 10px;
-  background-color: $secondary-color;
-  border: none;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 100vh;
+  width: 100vh;
 }
 
-.admin-dashboard-search input[type="text"] {
-  padding: 10px;
-  font-size: 16px;
-  border: none;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.admin-dashboard-search button[type="submit"] {
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: $primary-color;
-  color: $text-color;
-  border: none;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-}
-
-.admin-dashboard-search button[type="submit"]:hover {
-  background-color: $secondary-color;
-}
-
-.admin-dashboard-options {
+.contentPanelAdmin{
+  background-color: #222222;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin-top: 20px;
-}
+  height: 80%;
+  width: 80%;
+  gap:20px;
 
-.admin-dashboard-option {
-  width: calc(33.33% - 10px);
-  margin-bottom: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  overflow: hidden;
-  transition: transform 0.3s ease-in-out;
-}
+  border-radius: 15px;
 
-.admin-dashboard-option:hover {
-  transform: scale(1.05);
-}
-
-.admin-dashboard-option-content {
-  padding: 20px;
-  text-align: center;
-}
-
-// Dodatkowe style dla animacji
-
-.admin-dashboard-content {
-  max-width: 1200px;
-  margin: 20px auto;
-  padding: 20px;
-  background-color: $background-color;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-.admin-dashboard-content.active {
-  opacity: 1;
-  transform: translateY(0);
 }
