@@ -14,6 +14,8 @@ import Img3 from '../images/option-3.jpg';
 import Img4 from '../images/option-4.jpg';
 import Img5 from '../images/option-5.jpg';
 import AdminDashboardContentList from "./AdminDashboardContentList";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {solid} from "@fortawesome/fontawesome-svg-core/import.macro";
 
 // Define title
 const title = "Admin Dashboard";
@@ -26,17 +28,17 @@ class AdminDashboard extends React.Component {
             onLogout:props.onLogout,
             numberOfOptions: 4,
             optionText: [
-                "newTicket",
-                "yourTicket",
-                "fAQ",
+                "New Ticket",
+                "Your Tickets",
+                "FAQ",
                 "Users",
-                "Option 5"
+
             ],
             onClick: [
-                this.handleOptionClick.bind(this, "New case"),
+                this.handleOptionClick.bind(this, "New Ticket"),
                 this.handleOptionClick.bind(this, "Your Tickets"),
-                this.handleOptionClick.bind(this, "Option 3"),
-                this.handleOptionClick.bind(this, "Option 4"),
+                this.handleOptionClick.bind(this, "FAQ"),
+                this.handleOptionClick.bind(this, "Users"),
                 this.handleOptionClick.bind(this, "Option 5"),
             ],
             backgroundImage: [
@@ -45,7 +47,18 @@ class AdminDashboard extends React.Component {
                 Img3,
                 Img4
             ],
-            componentToShow:"test"
+            componentToShow:"options",
+            color:"white",
+            selectedOption:"users",
+            icons:[
+                <FontAwesomeIcon icon={solid("plus")} style={{color: this.color,}} />,
+                <FontAwesomeIcon icon={solid("align-justify")} style={{color:this.color,}} />,
+                <FontAwesomeIcon icon={solid("question")} style={{color: this.color,}} />,
+                <FontAwesomeIcon icon={solid("user")} style={{color: this.color,}} />
+
+
+
+            ]
 
 
         };
@@ -59,10 +72,16 @@ class AdminDashboard extends React.Component {
         this.setState({ searchTerm: option.value });
     };
 
+    handleReturn = () => {
+        this.setState({ componentToShow: "dashboard" });
+    };
+
+
     handleOptionClick = (option) => {
-        // Handle the click event for each option
-        console.log(`Option ${option} clicked`);
-        //switch case zzrob
+        this.setState({componentToShow:"options", selectedOption:option});
+
+        console.log(option);
+
     };
 
     render() {
@@ -82,7 +101,14 @@ class AdminDashboard extends React.Component {
                                 backgroundImage={this.state.backgroundImage}
                             />}
 
-                            {this.state.componentToShow ==="test" && <AdminDashboardContentList />}
+                            {this.state.componentToShow ==="options" && <AdminDashboardContentList
+                                optionText = {this.state.optionText}
+                                numberOfOptions = {this.state.numberOfOptions}
+                                componentToShow ={this.state.selectedOption}
+                                icons ={this.state.icons}
+                                color={this.state.color}
+                                onClick={this.state.onClick}
+                                handleReturn={this.handleReturn}/>}
 
 
 

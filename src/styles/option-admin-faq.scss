@@ -1,0 +1,26 @@
+.option-admin-faq-container {
+  display: flex;
+  height: 100%;
+  align-items: center; // Wyśrodkowanie wertykalne
+  justify-content: center; // Wyśrodkowanie horyzontalne
+  overflow: scroll;
+}
+
+.option-admin-faq-row {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center; // Wyśrodkowanie wertykalne
+}
+.option-faq-table-container{
+  overflow: scroll;
+}
+
+.add-faq-form-container{
+  color:white;
+}
+
+.option-admin-faq-col-left,
+.option-admin-faq-col-right {
+  text-align: center; // Dodanie stylu dla wyśrodkowania tekstu
+}

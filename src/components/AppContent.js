@@ -2,7 +2,7 @@ import * as React from 'react';
 import WelcomeContent from './WelcomeContent';
 import AuthContent from "./AuthContent";
 import LoginForm from "./LoginForm";
-import {getAuthToken, request, setAuthHeader, setRole } from './axios_helper';
+import {getAuthToken, request, setAuthHeader, setId, setRole} from './axios_helper';
 import Buttons from "./Buttons";
 import DashboardRoutes from "./DashboardRoutes";
 import Header from "./Header";
@@ -38,8 +38,11 @@ export default class AppContent extends React.Component {
                 console.log('Login successful!');
                 setAuthHeader(response.data.token);
                 setRole(response.data.role);
+                setId(response.data.id);
                 console.log(response.data.role);
                 console.log(response.data.token);
+                console.log(response.data.id);
+
                 this.setState({ componentToShow: "dashboard" });
 
                // this.setState({ componentToShow: "messages" });
