@@ -32,11 +32,11 @@ console.log(props.componentToShow);
                 <Col className={"content-dashboard-list-content-panel"} sm={10} md={10} lg={10}>
                     {props.componentToShow === "Users" && <OptionUsers/>}
                     {props.componentToShow === "FAQ" && <OptionAdminFaq/>}
-                    {props.componentToShow === "Your orders" && <Orders/>}
-                    {props.componentToShow === "New Ticket" && <NewTicket />}
+                    {props.componentToShow === "Your Tickets" && <NewTicket obtainNew={false}/>}
+                    {props.componentToShow === "New Ticket" && <NewTicket obtainNew={true}/>}
 
                 </Col>
-            </Row>
+            </Row >
         </Container>
         </>
     );

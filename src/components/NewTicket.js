@@ -5,6 +5,8 @@ import Orders from "./Orders";
 import NewTicketModal from "./NewTicketModal";
 import TicketsTable from "./TicketsTable";
 import InfoModal from "./InfoModal";
+import {wait} from "@testing-library/user-event/dist/utils";
+import Chat from "./Chat";
 
 class NewTicket extends React.Component {
     constructor(props) {
@@ -17,6 +19,8 @@ class NewTicket extends React.Component {
             infoDuration: 0,
             infoText: '',
             showInfoModal: false,
+            ticketId:0,
+            obtainNew:props.obtainNew
         };
     }
 
@@ -45,6 +49,8 @@ class NewTicket extends React.Component {
         try {
             await this.updateTicketHandler(ticketId);
             this.showInfoModal("Success", `Ticket ${titleTicket} successfully added`);
+
+           this.setState({ ticketId:ticketId})
         } catch (error) {
             console.error('Error updating ticket handler:', error);
             this.showInfoModal("Error", `Cannot add ticket: ${titleTicket}`);
@@ -78,6 +84,15 @@ class NewTicket extends React.Component {
 
     onClickShow = (ticketId) => {
         console.log("new show id: " + ticketId);
+
+        if(getRole()==="ADMIN")
+        {
+            this.setState({componentToShow:"chat", ticketId:ticketId})
+        }
+        if(getRole()==="USER")
+        {
+
+        }
     };
 
     render() {
@@ -103,7 +118,7 @@ class NewTicket extends React.Component {
                         <TicketsTable
                             onClickAdd={this.onClickAdd}
                             onClickShow={this.onClickShow}
-                            obtainNew={true}
+                            obtainNew={this.state.obtainNew}
                         />
 
                         <InfoModal
@@ -111,11 +126,14 @@ class NewTicket extends React.Component {
                             text={this.state.infoText}
                             duration={this.state.infoDuration}
                             showModal={this.state.showInfoModal}
-                            onHide={() => this.setState({ showInfoModal: false })}
+                            onHide={() => this.setState({ showInfoModal: false, componentToShow:"chat" })}
                         />
                     </>
 
 
+                )}
+                {this.state.componentToShow === "chat" && (
+                    <Chat ticketId={this.state.ticketId}/>
                 )}
             </>
         );

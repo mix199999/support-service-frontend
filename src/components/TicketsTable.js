@@ -107,7 +107,7 @@ class TicketsTable extends Component {
                                 </Button>
                             )}
                             {getRole() === 'ADMIN' && !this.props.obtainNew && (
-                                <Button variant="primary" onClick={() => this.handleShowClick(ticket.idTicket)}>
+                                <Button variant="primary" onClick={(event) => this.handleShowClick(event, ticket.idTicket)}>
                                     Show
                                 </Button>
                             )}

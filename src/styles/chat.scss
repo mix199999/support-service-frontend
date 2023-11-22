@@ -1,0 +1,35 @@
+/* Chat.css */
+
+.chat-container {
+  background-color: #f4f4f4;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.message-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.own-message {
+  align-self: flex-end;
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 70%;
+}
+
+.user-message {
+  align-self: flex-start;
+  background-color: #e1e1e1;
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 70%;
+}
