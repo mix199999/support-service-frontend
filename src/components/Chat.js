@@ -6,7 +6,7 @@ import { getId } from "./axios_helper";
 
 import '../styles/chat.scss'; // Import custom styles for the chat
 
-const Chat = ({ ticketId }) => {
+const Chat = ({ ticketId, onBackClick }) => {
     const [messages, setMessages] = useState([]);
     const [messageInput, setMessageInput] = useState('');
     const [stompClient, setStompClient] = useState(null);
@@ -53,30 +53,42 @@ const Chat = ({ ticketId }) => {
     };
 
     return (
-        <Container>
+        <>
+            <div className={"navigation-messages"}>
+                <Button onClick={() => onBackClick()} variant="outline-primary">Back </Button>
+            </div>
+
             <div className="chat-container">
                 <div className="message-container">
                     {messages.map((msg) => (
-                        <div key={msg.id} className={msg.senderId === parseInt(getId(), 10) ? 'own-message' : 'user-message'}>
+                        <div
+                            key={msg.id}
+                            className={msg.senderId === parseInt(getId(), 10) ? 'own-message' : 'user-message'}
+                        >
                             {msg.message}
                         </div>
                     ))}
                 </div>
-                <Form>
-                    <Form.Group controlId="messageInput">
-                        <Form.Control
-                            type="text"
-                            placeholder="Type your message..."
-                            value={messageInput}
-                            onChange={(e) => setMessageInput(e.target.value)}
-                        />
-                    </Form.Group>
-                    <Button variant="primary" onClick={sendMessage}>
-                        Send
-                    </Button>
-                </Form>
+
             </div>
-        </Container>
+
+            <Form className="message-input-form">
+                <Form.Group controlId="messageInput"   className={"message-input-text"}>
+                    <Form.Control
+                        type="text"
+                        placeholder="Type your message..."
+                        value={messageInput}
+                        onChange={(e) => setMessageInput(e.target.value)}
+
+                    />
+                </Form.Group>
+                <Button variant="primary" onClick={sendMessage}>
+                    Send
+                </Button>
+            </Form>
+
+
+        </>
     );
 };
 

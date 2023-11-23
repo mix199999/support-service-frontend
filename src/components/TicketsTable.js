@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
 import { Table, Button } from 'react-bootstrap';
 import { request, getId, getRole } from './axios_helper';
-import {wait} from "@testing-library/user-event/dist/utils";
 
 class TicketsTable extends Component {
     constructor(props) {
         super(props);
         this.state = {
             ticketsData: [],
-            onClickAdd : props.onClickAdd,
-            onClickShow : props.onClickShow,
-
+            onClickAdd: props.onClickAdd,
+            onClickShow: props.onClickShow,
+            updateTicketStatus: props.updateTicketStatus,
         };
     }
 
@@ -21,8 +20,6 @@ class TicketsTable extends Component {
 
     componentDidUpdate(prevProps) {
         if (this.props.obtainNew !== prevProps.obtainNew) {
-
-
             this.fetchData();
         }
     }
@@ -47,32 +44,24 @@ class TicketsTable extends Component {
         }
     };
 
-    handleTakeClick = (e,ticketId, titleTicket) => {
-        // Handle 'Take' button click
-        console.log(`Take button clicked for ticket ID ${ticketId}`);
+    handleTakeClick = (e, ticketId, titleTicket) => {
         e.preventDefault();
         this.state.onClickAdd(ticketId, titleTicket);
     };
 
-    handleShowClick =  (e, ticketId) => {
-        // Handle 'Show' button click
-        console.log(`Show button clicked for ticket ID ${ticketId}`);
+    handleShowClick = (e, ticketId) => {
         e.preventDefault();
         this.state.onClickShow(ticketId);
-
-
-
     };
 
-    handleCloseClick = ( ticketId) => {
-        // Handle 'Close' button click
-        console.log(`Close button clicked for ticket ID ${ticketId}`);
-
+    handleCloseClick = (e, ticketId) => {
+        e.preventDefault();
+        this.state.updateTicketStatus(ticketId);
     };
 
     render() {
         return (
-            <Table className={"option-faq-table"} striped borderless hover variant="dark">
+            <Table  striped borderless hover variant="dark">
                 <thead>
                 <tr>
                     <th>#</th>
@@ -87,32 +76,26 @@ class TicketsTable extends Component {
                         <td>{ticket.titleTicket}</td>
                         <td>
                             {getRole() === 'USER' && (
-                                <Button variant="primary" onClick={() => this.handleShowClick(ticket.idTicket)}>
+                                <Button variant="primary" onClick={(event) => this.handleShowClick(event, ticket.idTicket)}>
                                     Show
                                 </Button>
                             )}
                             {getRole() === 'ADMIN' && this.props.obtainNew && (
-                                <Button variant="success"
-                                        onClick={(event) => this.handleTakeClick(event , ticket.idTicket , ticket.titleTicket)}
+                                <Button
+                                    variant="success"
+                                    onClick={(event) => this.handleTakeClick(event, ticket.idTicket, ticket.titleTicket)}
                                 >
                                     Take
                                 </Button>
                             )}
-                            {getRole() === 'ADMIN' && this.props.obtainNew && (
-                                <Button variant="primary"
-                                        onClick={(event) => this.handleShowClick(event , ticket.idTicket , ticket.titleTicket)}
 
-                                >
-                                    Show
-                                </Button>
-                            )}
                             {getRole() === 'ADMIN' && !this.props.obtainNew && (
                                 <Button variant="primary" onClick={(event) => this.handleShowClick(event, ticket.idTicket)}>
                                     Show
                                 </Button>
                             )}
                             {getRole() === 'ADMIN' && !this.props.obtainNew && (
-                                <Button variant="danger" onClick={() => this.handleCloseClick(ticket.idTicket)}>
+                                <Button variant="danger" onClick={(event) => this.handleCloseClick(event, ticket.idTicket)}>
                                     Close
                                 </Button>
                             )}

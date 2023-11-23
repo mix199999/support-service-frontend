@@ -47,7 +47,7 @@ class AdminDashboard extends React.Component {
                 Img3,
                 Img4
             ],
-            componentToShow:"options",
+            componentToShow:"dashboard",
             color:"white",
             selectedOption:"users",
             icons:[
@@ -58,7 +58,8 @@ class AdminDashboard extends React.Component {
 
 
 
-            ]
+            ],
+            selectedOptionIndex: 0,
 
 
         };
@@ -108,15 +109,8 @@ class AdminDashboard extends React.Component {
                                 icons ={this.state.icons}
                                 color={this.state.color}
                                 onClick={this.state.onClick}
-                                handleReturn={this.handleReturn}/>}
-
-
-
-
-
-
-
-
+                                handleReturn={this.handleReturn}
+                                selectedOptionIndex={this.state.selectedOptionIndex}/>}
 
                     </Row>
 

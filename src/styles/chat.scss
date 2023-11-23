@@ -1,20 +1,26 @@
 /* Chat.css */
+.page-container {
+  height: 100%;
+}
 
 .chat-container {
-  background-color: #f4f4f4;
+  background-color: #212529;
   padding: 20px;
   border-radius: 10px;
   margin: 20px 0;
   display: flex;
   flex-direction: column;
-  max-height: 400px;
+  max-height: 80%;
   overflow-y: auto;
+  position: relative;
+  height: 100%;
 }
 
 .message-container {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  flex: 1; /* Add this line to make messages fill available space */
 }
 
 .own-message {
@@ -32,4 +38,43 @@
   padding: 10px;
   border-radius: 10px;
   max-width: 70%;
+}
+
+.message-input-form {
+
+  padding: 10px;
+  display: flex;
+  width: 100%;
+
+  .form-control {
+    flex: 1;
+    background-color: #333333;
+    color: #ffffff;
+    border: 1px solid #444444;
+
+  }
+
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    width: 35%;
+  }
+
+  .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+  }
+  .message-input-text{
+    width: 80%;
+  }
+}
+
+
+
+
+.navigation-messages{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
 }
